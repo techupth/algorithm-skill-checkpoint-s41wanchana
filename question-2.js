@@ -1,5 +1,18 @@
 function findProductPrice(products, name) {
   // Your code here
+  let left = 0;
+  let right = products.length;
+  while (left <= right) {
+    let mid = Math.floor((left + right) / 2);
+    if (products[mid].name === name) {
+      return products[mid].price;
+    } else if (products[mid].name < name) {
+      left = mid + 1;
+    } else if (products[mid].name > name) {
+      right = mid - 1;
+    }
+  }
+  return -1;
 }
 
 // Test case
@@ -10,4 +23,4 @@ const products = [
 ];
 
 console.log(findProductPrice(products, "Banana")); // Output: 0.8
-console.log(findProductPrice(products, "Durian")); // Output: -1
+console.log(findProductPrice(products, "Apple")); // Output: -1
